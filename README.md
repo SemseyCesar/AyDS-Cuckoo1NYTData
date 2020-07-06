@@ -13,7 +13,7 @@ Este módulo provee la función de obtener información(reviews) sobre determina
                 omdbMovieResponse.title = "The Matrix"
                 omdbMovieResponse.year = "1999"                
 
-* Luego se invoca el método **getMovie** al **externalService**, suministrándole el objeto de  tipo**OmdbMovieResponse**.
+* Luego se invoca el método **getMovie** al **externalService**, suministrándole el objeto de  tipo **OmdbMovieResponse**.
 
         val nytMovieResponse = externalService.getMovie(omdbMovieResponse)
         
