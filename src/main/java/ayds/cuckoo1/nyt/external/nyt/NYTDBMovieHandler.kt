@@ -1,13 +1,12 @@
 package ayds.cuckoo1.nyt.external.nyt
 
-import ayds.cuckoo1.nyt.external.entities.OmdbMovieResponse
 import ayds.cuckoo1.nyt.external.entities.NYTDBMovieResponse
 import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 
 interface ExternalMovieHandler {
-    fun handleResponse(responseBody: String?, omdbMovie: OmdbMovieResponse): NYTDBMovieResponse
+    fun handleResponse(responseBody: String?, title: String, year: String): NYTDBMovieResponse
 }
 
 class ExternalMovieHandlerImpl() : ExternalMovieHandler {
@@ -21,12 +20,12 @@ class ExternalMovieHandlerImpl() : ExternalMovieHandler {
     private val PUBLICATION_DATE_JSON = "publication_date"
     private val LINK_JSON = "link"
 
-    override fun handleResponse(responseBody: String?, omdbMovie: OmdbMovieResponse): NYTDBMovieResponse {
+    override fun handleResponse(responseBody: String?, title: String, year: String): NYTDBMovieResponse {
         val nytdbMovie = NYTDBMovieResponse()
 
-        val movieInfoJSON = getMovieInfo(responseBody, omdbMovie.year)
+        val movieInfoJSON = getMovieInfo(responseBody, year)
         nytdbMovie.apply {
-            title = omdbMovie.title
+            this.title = title
             summary = getMovieSummaryFromJSON(movieInfoJSON)
             reviewUrl = getMovieReviewUrlFromJSON(movieInfoJSON)
             imageUrl = getImageUrlFromJSON(movieInfoJSON)
