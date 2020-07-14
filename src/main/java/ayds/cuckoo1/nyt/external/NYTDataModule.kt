@@ -12,6 +12,6 @@ internal object NYTDataModule {
         .baseUrl(RETROFIT_URL)
         .addConverterFactory(ScalarsConverterFactory.create())
         .build()
-    val externalService: Service = NytService(ExternalMovieHandlerImpl(), retrofit.create(NYTimesAPI::class.java))
+    val externalService: NYTService = NytService(ExternalMovieHandlerImpl(), retrofit.create(NYTimesAPI::class.java))
 
 }

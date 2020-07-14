@@ -1,13 +1,13 @@
 package ayds.cuckoo1.nyt.external.nyt
 
-import ayds.cuckoo1.nyt.external.Service
+import ayds.cuckoo1.nyt.external.NYTService
 import ayds.cuckoo1.nyt.external.entities.NYTDBMovieResponse
 import retrofit2.Response
 
 internal class NytService(
     private val nytdbMovieHandler: ExternalMovieHandler,
     private val nytAPI: NYTimesAPI
-) : Service {
+) : NYTService {
 
     override fun getMovie(title: String, year: String): NYTDBMovieResponse {
         val response = getMovieResponse(title)
